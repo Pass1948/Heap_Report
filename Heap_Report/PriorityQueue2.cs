@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,9 +8,10 @@ using System.Xml.Linq;
 
 namespace Heap_Report
 {
-    internal class PriorityQueue<TElement>      // PriorityQueue는 데이터값과 우선순위 변수를 필요로 하는데 이중에
+    public class PriorityQueue2<TElement>      // PriorityQueue는 데이터값과 우선순위 변수를 필요로 하는데 이중에
                                                 // 우선순위는 기본적으로 int로 되어있어서 별도에 매개변수 넣지 않고 사용해도 문제없다
     {
+        
         // PriorityQueue는 배열의 형태를 띄지만 노드를 사용하는 비선형적인 구조를 갖고있다
         // 그래서 노드를 구현하지만 머리, 꼬리 구현없이 한쪽만 구현하여 비선형적인 트리구조로 컨셉을 지키면서 구현해 줘야한다
         private struct Node                     // 노드에 데이터값과 우선순위 int형을 넣어준다
@@ -19,12 +21,11 @@ namespace Heap_Report
         }
 
         private List<Node> nodes;               // 배열을 이용해도 되지만 추가와 삭제에 제한없이 효율적인 List를 활용해준다
-
-        public PriorityQueue()
+     
+        public PriorityQueue2()
         {
             this.nodes = new List<Node>();      // 노드 초기화
         }
-
 
         // '추가' 구현
         // 힙상태가 이뤄진 트리구조에서 새로운 데이터를 추가할경우
@@ -117,6 +118,14 @@ namespace Heap_Report
 
             }
             return rootNode.element;                                                                        // 해당 값을 반환한다
+        }
+
+        // 맨뒤 데이터 삭제
+        public TElement DequeueLast()
+        {
+            Node lastNode = nodes[nodes.Count - 1];
+            nodes.RemoveAt(nodes.Count - 1);
+            return lastNode.element;
         }
 
         // 최상단의 데이터 호출 함수구현
