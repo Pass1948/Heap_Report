@@ -41,12 +41,10 @@ namespace Heap_Report
             priorityQueue.Enqueue("데이터3", 5);
             priorityQueue.Enqueue("데이터4", 2);
             priorityQueue.Enqueue("데이터5", 4);
-            
-
-            while (priorityQueue.Count > 0) Console.WriteLine(priorityQueue.Dequeue());
             priorityQueue.Dequeue();
 
-
+            while (priorityQueue.Count > 0) Console.WriteLine(priorityQueue.Dequeue());
+            
             priorityQueue2.Enqueue("데이터1", 1);
             priorityQueue2.Enqueue("데이터2", 3);
             priorityQueue2.Enqueue("데이터3", 5);
